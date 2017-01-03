@@ -10,10 +10,16 @@ using namespace std;
 class Image {
 
 public:
+
+    const static int TXT_CENTER_BOTTOM = 1;
+    const static int TXT_CENTER_CENTER = 2;
+
     /**
     Matrix containing the data of the image
     **/
     Mat mat;
+
+
 
     /**
     Default constructor
@@ -149,7 +155,7 @@ public:
     /**
     Applies a fixed-level threshold using the type THRESH_BINARY_INV with the values 100 and 255 on the current Image
     **/
-    Image &threshold(int threshold = 100);
+    Image &threshold(int threshold = .1);
 
     /**
     Equalizes the histogram of a grayscale image.
@@ -180,7 +186,7 @@ public:
      @param title Title of the window
      @param waitKey Specify if the image waits for a key to continue. <1: don't wait; =0: wait for a key; >0: wait for 'waitKey' milliseconds
     **/
-    void show(string title, int waitKey = -1);
+    int show(string title, int waitKey = -1);
 
     Image & expand3Channels();
 
@@ -196,6 +202,11 @@ public:
     bool contains(int i, int j);
     bool contains(Point point);
 
+    Image & writeText(string text, int testPosition = TXT_CENTER_BOTTOM);
+
+    Size size();
+
+    void plotPolygon(const vector<Point2f> &vector, Scalar color = Scalar(0,255,0));
 
 private:
     /**

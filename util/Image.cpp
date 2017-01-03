@@ -5,7 +5,7 @@
 #include <opencv2/imgcodecs.hpp>
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
-#include <cv.hpp>
+#include <opencv/cv.hpp>
 #include "Image.h"
 
 Image Image::NONE_IMAGE = Image(Mat());
@@ -209,16 +209,22 @@ Image &Image::plotHoughLines(Image &plot, int channel, Scalar color) {
 }
 
 
-void Image::show(string title, int wk) {
+int Image::show(string title, int wk) {
     imshow(title, mat);
     if (wk >= 0) {
-        waitKey(wk);
+        return waitKey(wk);
     }
+    return 255;
 }
 
 Image &Image::threshold(int threshold) {
     Mat m(mat.rows, mat.cols, CV_8UC3, Scalar(0, 0, 0));
-    cv::threshold(mat, m, threshold, 255, THRESH_BINARY);
+    if(threshold < 0 || threshold > 255){
+        cv::threshold(mat, m, threshold, 255, THRESH_BINARY | THRESH_OTSU);
+    }else{
+        cv::threshold(mat, m, threshold, 255, THRESH_BINARY);
+
+    }
     return setMat(m);
 }
 
@@ -315,9 +321,56 @@ void Image::plotLine(Point start, Point end, Scalar color, int thickness) {
 }
 
 Image &Image::extractQuad(Point2f * from, Size size) {
-    Point2f to[4] = {Point2f(0, 0), Point2f(0, size.height - 1), Point2f(size.height - 1, size.width - 1),
+    Point2f to[4] = {Point2f(0, 0),
+                     Point2f(0, size.height - 1),
+                     Point2f(size.height - 1, size.width - 1),
                      Point2f(size.width - 1, 0)};
     return perspectiveWarp(from, to, size);
+}
+
+Size Image::size() {
+    return cv::Size(this->width(),this->height());
+}
+
+Image & Image::writeText(string text, int testPosition) {
+    int fontFace = FONT_HERSHEY_SIMPLEX;
+    double fontScale = 0.7;
+    int thickness = 1;
+
+
+    int baseline= 0;
+    Size textSize = getTextSize(text, fontFace,
+                                fontScale, thickness, &baseline);
+    baseline += thickness;
+    Point textOrg;
+
+    switch (testPosition){
+        case TXT_CENTER_CENTER:
+            textOrg = Point((mat.cols - textSize.width)/2,
+                          (mat.rows + textSize.height)/2);
+            break;
+        case TXT_CENTER_BOTTOM:
+        default:
+            textOrg = Point((mat.cols - textSize.width)/2,
+                          (mat.rows - textSize.height));
+
+    }
+
+
+    // then put the text itself
+    putText(mat, text, textOrg, fontFace, fontScale,
+            Scalar::all(255), thickness, 6);
+
+    return *this;
+}
+
+void Image::plotPolygon(const vector<Point2f> &vector, Scalar color) {
+
+    for(int i = 0; i < vector.size(); i++){
+        int i2 = (i+1) % vector.size();
+        plotLine(vector[i], vector[i2], color);
+    }
+
 }
 
 

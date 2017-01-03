@@ -4,11 +4,11 @@
 
 #include "Geometry.h"
 
-float Geometry::slopeAngle(Vec4i points) {
+double Geometry::slopeAngle(Vec4f points) {
     return fastAtan2(points[2] - points[0], points[3] - points[1]);
 }
 
-Vec2i Geometry::intersect(Vec4i edge1, Vec4i edge2) {
+Vec2f Geometry::intersect(Vec4f edge1, Vec4f edge2) {
     float x1 = edge1[0], y1 = edge1[1], x2 = edge1[2], y2 = edge1[3];
     float x3 = edge2[0], y3 = edge2[1], x4 = edge2[2], y4 = edge2[3];
 
@@ -21,21 +21,25 @@ Vec2i Geometry::intersect(Vec4i edge1, Vec4i edge2) {
     return cv::Vec2i(x, y);
 }
 
-float Geometry::distance(Vec2i x, Vec2i y) {
+float Geometry::distance(Vec2f x, Vec2f y) {
     return sqrt(pow(y[0] - x[0], 2) + pow(y[1] - x[1], 2));
 }
 
-float Geometry::distance(Vec4i ab, Point c) {
-    Point A = Point(ab[0], ab[1]);
-    Point B = Point(ab[2], ab[3]);
-    Point AB = B - A;
-    Point c2 = c + Point(AB.y, -AB.x);
-    Vec4i c2c(c.x, c.y, c2.x, c2.y);
+float Geometry::distance(Vec4f ab, Point2f c, Point2f * intersection) {
+    Point2f A = Point2f(ab[0], ab[1]);
+    Point2f B = Point2f(ab[2], ab[3]);
+    Point2f AB = B - A;
+    Point2f c2 = c + Point2f(AB.y, -AB.x);
+    Vec4f c2c(c.x, c.y, c2.x, c2.y);
+    if(intersection != NULL){
+        *intersection = intersect(ab, c2c);
+        return distance(*intersection, c);
+    }
     return distance(intersect(ab, c2c), c);
 }
 
 
-Vec2i Geometry::midpoint(Vec4i e) {
-    return cv::Vec2i(cvRound((e[0] + e[2]) / 2), cvRound((e[1] + e[3]) / 2));
+Vec2f Geometry::midpoint(Vec4f e) {
+    return cv::Vec2f((e[0] + e[2]) / 2, (e[1] + e[3]) / 2);
 }
 

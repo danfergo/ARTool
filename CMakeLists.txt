@@ -1,9 +1,13 @@
 cmake_minimum_required(VERSION 2.8)
 project(ARTool)
-find_package(OpenCV REQUIRED)
-add_executable(ARTool main.cpp classes/Image.cpp classes/Image.h classes/Geometry.cpp classes/Geometry.h classes/Util.cpp classes/Util.h classes/MarkerDetector.cpp classes/MarkerDetector.h)
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-add_executable(CalibrationTool opencv_calibration.cpp)
+find_package(OpenCV REQUIRED)
+
+add_executable(ARTool ar.cpp util/Image.cpp util/Image.h util/Geometry.cpp util/Geometry.h util/Util.cpp util/Util.h classes/MarkerDetector.cpp classes/MarkerDetector.h classes/CameraCalibrator.cpp classes/CameraCalibrator.h util/Camera.cpp util/Camera.h)
+
+add_executable(CalibrationTool calibrator.cpp util/Image.cpp util/Image.h util/Geometry.cpp util/Geometry.h util/Util.cpp util/Util.h classes/MarkerDetector.cpp classes/MarkerDetector.h classes/CameraCalibrator.cpp classes/CameraCalibrator.h util/Camera.cpp util/Camera.h)
+
 
 
 # find_package(OpenGL REQUIRED)

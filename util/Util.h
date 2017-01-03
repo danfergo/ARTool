@@ -5,8 +5,14 @@
 #ifndef DISPLAYIMAGE_UTIL_H
 #define DISPLAYIMAGE_UTIL_H
 
+#include <string>
+#include <vector>
 
 class Util {
+public:
+
+	static std::vector<std::string> fileNamesAt(std::string path);
+
 };
 
 
