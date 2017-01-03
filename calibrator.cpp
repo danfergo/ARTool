@@ -27,11 +27,37 @@ void onSelectOrigin(int event, int x, int y, int flags, void *userdata) {
     }
 }
 
+
+
+bool fillInMarkerDetails(MarkerDescriptor & marker, int idx){
+
+    marker.getFrontalView().show("Marker " + to_string(idx));
+    int key = waitKey(0);
+
+    if(key == ESC_KEY){
+        return false;
+    }
+
+
+    string identifier;
+
+    printf("Please choose an identifier for the marker:");
+    cin >> identifier;
+    marker.setIdentifier(identifier);
+
+    // int x, y, z;
+    // printf("x y z?");
+    // scanf("%d %d %d", &x, &y, &z);
+
+    cv::destroyWindow("Marker " + to_string(idx));
+
+
+    return true;
+}
+
 void detectOneMarker() {
 
     Camera camera(0);
-
-
     int threshold = 256;
 
     namedWindow("Camera", 0);
@@ -39,73 +65,38 @@ void detectOneMarker() {
     createTrackbar("Threshold", "Camera", &threshold, 256);
 
     Image image = camera.nextFrame().clone(), bw;
-    MarkerDetector markerDetector;
-    vector<vector<Point2f> > markers;
-
-
-    // BUG WTF a mostrar os marcadores no fim .
-    // a ideia era mostrar marcador a marcador, e perguntar ao user as coordenadas da origem
-
+    vector<MarkerDescriptor> markers;
 
     int key;
     do {
-        image = camera.nextFrame().clone();
-
-        // image.clone().changeColorSpace(CV_BGR2GRAY).plotNthChannelHistogram(0).show("Camera histogram"); - aqui aparece
+        image = camera.nextFrame();
         bw = image.clone().changeColorSpace(CV_BGR2GRAY).gaussianBlur(7).threshold(threshold);
-        bw.show("bw");
-
-        markers = markerDetector.findMarkers(bw);
+        markers = MarkerDetector().findMarkers(bw);
 
         for (int i = 0; i < markers.size(); i++) {
-            image.plotPolygon(markers[i]);
-            //bw.clone().extractQuad(&markers[i][0], Size(320, 320)).show("Marker "); - aqui aparece
-
+            image.plotPolygon(markers[i].getCorners());
         }
 
-        image.writeText("Press space to save the current markers.").show("Camera");
-
+        image.writeText("Press space to exportToFile the current markers.").show("Camera");
         key = waitKey(1);
-
-
     } while (key != SPC_KEY && key != ESC_KEY);
 
-    //destroyWindow("Camera");
-    //camera.release();
-
-    cout << markers.size() << " " << key;
+    destroyWindow("Camera");
+    camera.release();
 
     if (key == SPC_KEY) {
-
-        for (int i = 0; i < markers.size(); i++) {
-            bw.clone().extractQuad(&markers[i][0], Size(320, 320)).show("Marker "); //  - aqui nao aparece
-
-            bw.show("bw2");
-            key = waitKey(30);
-
-            string identifier;
-
-            printf("Whats the number of corners along width (number of columns  - 1): ");
-            cin >> identifier;
-
-            //scanf("%s", &identifier);
-            int x, y, z;
-            printf("x y z?");
-            scanf("%d %d %d", &x, &y, &z);
-
-            cout << identifier << ": " << to_string(x) << " " << to_string(y) << " " << to_string(z) << " " << endl;
-
-            cv::destroyWindow("Marker " + to_string(i + 1));
+        for (vector<MarkerDescriptor>::iterator it = markers.begin(); it != markers.end();){
+            if(fillInMarkerDetails(*it, it - markers.begin() + 1)){
+                (*it).exportToFile();
+                cout << "Marker " << *it << " exported to file." << endl;
+                it++;
+            }
+            else {
+                it = markers.erase(it);
+            }
         }
+
     }
-/*
-    for (int i = 0; i < markers.size(); i++) {
-
-        clone.changeColorSpace(CV_GRAY2BGR);
-        image.plotLine(markers[i][1], markers[i][3], Scalar(0, 0, 255));
-        image.plotLine(markers[i][0], markers[i][2], Scalar(0, 255, 255));
-
-    }*/
 
 }
 
@@ -118,7 +109,7 @@ void calibrateCamera(int nRows, int nCols, int nSamples) {
     do {
         Image frame = camera.nextFrame();
         cameraCalibrator.findChessboard(frame);
-        string legend = "Press space to save the current frame. Saved " +
+        string legend = "Press space to exportToFile the current frame. Saved " +
                         to_string(cameraCalibrator.getNumberOfCollectedSamples()) + " of " + to_string(nSamples) + ".";
         frame.writeText(legend).show("Camera");
         key = waitKey(1);

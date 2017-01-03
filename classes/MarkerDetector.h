@@ -3,6 +3,7 @@
 
 
 #include "../util/Image.h"
+#include "MarkerDescriptor.h"
 
 class MarkerDetector {
 
@@ -28,7 +29,7 @@ public:
     bool validateMaxMinEdgeRatio(Point2f corners[4]);
     bool insideAnotherMarker(std::vector<vector<Point> >::iterator contourIt, std::vector<vector<Point> > othersContours);
 
-    vector<vector<Point2f> > findMarkers(Image image);
+    vector<MarkerDescriptor> findMarkers(Image image);
 
 private:
     bool validateArea(Image image, vector<Point> contour);

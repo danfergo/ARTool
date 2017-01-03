@@ -13,10 +13,12 @@
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/calibrator.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ar.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/classes/CameraCalibrator.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/classes/MarkerDescriptor.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/classes/CameraCalibrator.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/classes/MarkerDetector.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/classes/MarkerDescriptor.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/classes/MarkerDetector.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/classes/MarkerDetector.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/classes/CameraCalibrator.h" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">

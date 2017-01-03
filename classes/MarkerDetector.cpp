@@ -230,7 +230,7 @@ bool MarkerDetector::insideAnotherMarker(std::vector<vector<Point> >::iterator c
 
 
 
-vector<vector<Point2f>> MarkerDetector::findMarkers(Image image) {
+vector<MarkerDescriptor> MarkerDetector::findMarkers(Image image) {
     vector<vector<Point> > rawContours;
     vector<Vec4i> hierarchy;
 
@@ -268,7 +268,12 @@ vector<vector<Point2f>> MarkerDetector::findMarkers(Image image) {
         }
     }
 
-    return markersCorners;
+    vector<MarkerDescriptor> markers;
+    for(vector<vector<Point2f> >::iterator it = markersCorners.begin(); it!= markersCorners.end(); it++) {
+        markers.push_back(MarkerDescriptor(image,*it));
+    }
+
+        return markers;
 }
 
 bool MarkerDetector::validateArea(Image image, vector<Point> contour) {
