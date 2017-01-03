@@ -12,259 +12,154 @@ using namespace std;
 #include "util/Image.h"
 #include "classes/MarkerDetector.h"
 #include "classes/CameraCalibrator.h"
+#include "util/Shape.h"
+#include "classes/Database.h"
 
-string markerDatabasePath = "assets/database/";
-string pyramidPath = "assets/shapes/pyramid.txt";
+string markerDatabasePath = "database";
+string shapesDatabasePath = "shapes";
 
-Image extractedQuad;
+Database database;
 
-vector<Point3i> pyramidPoints;
-
-bool drawn = false;
-
-void onClick(int event, int x, int y, int flags, void *userdata) {
-    if (event == EVENT_LBUTTONDOWN) {
-        markerOrigin = Point(x, y);
-        drawn = false;
-    } else if (event == EVENT_RBUTTONDOWN) {
-        markerOrigin = Point(-1, -1);
+void printMenuList(vector<string> fileNames, bool printIndexes){
+    for(int i  = 0; i < fileNames.size(); i++){
+        cout << "    " << (printIndexes ? to_string(i+1) + " - " : "") << Util::split(fileNames[i], '.')[0] << endl;
     }
 }
 
-void onClickSaveImage(int event, int x, int y, int flags, void *userdata) {
-	if (event == EVENT_LBUTTONDOWN) {
-		cout << "Marker name: " << endl;
-		string markerName;
-		cin >> markerName;
-		string path = markerDatabasePath + markerName + ".jpg";
-		imwrite(path, extractedQuad.mat);
-	}
-}
 
-void readPyramid(string filePath) {
-	ifstream infile;
-	infile.open(filePath.c_str());
-
-	vector <string> record, record2;
-	while (infile)
-	{
-		string s;
-		if (!getline(infile, s)) break;
-
-		istringstream ss(s);
-		
-
-		while (ss)
-		{
-			string s;
-			if (!getline(ss, s, '/')) break;
-			record.push_back(s);
-			istringstream ss(s);
-		}
-	}
-	if (!infile.eof())
-	{
-		cerr << "Fooey!\n";
-	}
-
-	for (int i = 0; i < record.size(); i++) {
-
-		istringstream ss2(record[i]);
-		while (ss2) {
-			string s2;
-			if (!getline(ss2, s2, ',')) break;
-			record2.push_back(s2);
-		}
-	}
-
-	for (int i = 0; i < record2.size(); i+=3) {
-		istringstream buffer(record2[i]);
-		int x;
-		buffer >> x;
-		istringstream buffer2(record2[i+1]);
-		int y;
-		buffer2 >> y;
-		istringstream buffer3(record2[i+2]);
-		int z;
-		buffer3 >> z;
-		Point3i p(x, y, z);
-		pyramidPoints.push_back(p);
-	}
-	
-
+void renderAugmentedReality() {
 
 }
 
-void detectMarkers() {
-	VideoCapture stream1(0);   //0 is the id of video device.0 if you have only one camera.
-
-	if (!stream1.isOpened()) { //check if video device has been initialised
-		cout << "cannot open camera";
-	}
-
-	//SimpleBlobDetector::Params blobParams;
-	//blobParams.filterByCircularity = true;
-	//blobParams.minCircularity = 0;
-	//blobParams.maxCircularity = 0.65;
-	//blobParams.filterByConvexity = false;
-	//blobParams.filterByColor = false;
-	////blobParams.blobColor = 255;
-	//blobParams.filterByArea = true;
-	//blobParams.minArea = 2000;
-	//blobParams.maxArea = 10000;
-	//blobParams.minDistBetweenBlobs = 400;
-	//Ptr<SimpleBlobDetector> blobDetector = SimpleBlobDetector::create(blobParams);
-	//vector<KeyPoint> blobKeypoints;
-	//DrawMatchesFlags blobKeypointsFlag;
-
-	vector<vector<Point2f> > contours;
-	vector<Vec4i> hierarchy;
-
-	//unconditional loop
-	int threshold = 80;
-
-	namedWindow("image", 0);
-	setMouseCallback("image", onClick, NULL);
-
-	Image image;
-
-	while (true) {
-		//      if (!image.contains(markerOrigin)) {
-		stream1.read(image.mat);
-		//   cv::Rect myROI(50, 50, 100, 100);
-		//image.mat = image.mat(myROI);
-		/*
-		}*/
-
-		image.clone().changeColorSpace(CV_BGR2GRAY).plotNthChannelHistogram(0).show("cam hist");
 
 
-		Image clone = image.clone().changeColorSpace(CV_BGR2GRAY).gaussianBlur(7).threshold(
-			threshold).changeColorSpace(CV_GRAY2BGR);
+int manageAssociatedShapes(){
 
+    int option, option2;
+    vector<string> markersFileNames = Util::fileNamesAt(markerDatabasePath);
+    vector<string> shapesFileNames = Util::fileNamesAt(shapesDatabasePath);
 
-		createTrackbar("Threshold", "image", &threshold, 255);
+    do {
+        cout << "Markers database: " << endl;
+        printMenuList(markersFileNames, true);
+        cout <<  endl;
 
+        cout << "Markers database: " << endl;
+        printMenuList(shapesFileNames, true);
+        cout <<  endl;
 
-
-		/*blobDetector->detect(clone.mat, blobKeypoints);
-		drawKeypoints(clone.mat, blobKeypoints, clone.mat, Scalar(0, 0, 255), blobKeypointsFlag.DRAW_RICH_KEYPOINTS);
-		cout << blobKeypoints.size() << endl;*/
-
-		Image imageForCanny = image.clone().changeColorSpace(CV_BGR2GRAY).gaussianBlur(7);
-		Canny(imageForCanny.mat, imageForCanny.mat, threshold, 255);
-
-        double totalArea =  image.width() * image.height();
-
-
-		//find Contours
-		findContours(imageForCanny.mat, contours, hierarchy, CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE, Point(0, 0));
-
-		/// Draw contours
-		Scalar color = Scalar(0, 255, 0);
-		vector<vector<Point2> > contoursDrawn;
-		for (int i = 0; i < contours.size(); i++) {
-			if ( 0.005f*totalArea < contourArea(contours[i])  )
-			{
-				contoursDrawn.push_back(contours[i]);
-				drawContours(clone.mat, contours, i, color, 2, 8, hierarchy, 0, Point());
-			}
-		}
-
-		//Filter contours that were detected very near each other
-		for (int i = 0; i < contoursDrawn.size(); i++) {
-			if (i + 1 < contoursDrawn.size()) {
-				//if the X coordinate of the first point of the current contour is very near the X coordinate of the first point of the next contour then we eliminate the next contour since
-				//the first point of a counter is always it's up left corner
-				if (contoursDrawn[i][0].x > contoursDrawn[i + 1][0].x - 5 && contoursDrawn[i][0].x < contoursDrawn[i + 1][0].x + 5) {
-					contoursDrawn.erase(contoursDrawn.begin() + (i + 1));
-				}
-                else {
-
-                }
-			}
-
-
-
+        cout << "Associations: " << endl;
+        for(int i = 0; i < database.markers.size(); i++){
+            cout << "    " <<  to_string(i+1) << " - " << database.markers[i].getIdentifier() << " is associated to " << database.shapes[i].getIdentifier() << endl;
         }
 
-		cout << "Contours obtained: " << contoursDrawn.size() << endl;
-        for (int i = 0; i < contoursDrawn.size(); i++) {
-            MarkerDetector markerDetector(clone);
-            markerDetector.setContour(contoursDrawn[i]);
-			markerDetector.calcCorners();
-			markerDetector.validateStraightEdges(nullptr, nullptr);
+        cout <<  endl;
+
+        cout << "Actions: " << endl;
+        cout << "      - Insert a negative index to remove an existing association. (TODO)" << endl;
+        cout << "      - Insert a marker index followed by an shape index to associate them" << endl;
+        cout << endl ;
+        cout << "    0 - Go back" << endl;
+
+
+        do{
+            scanf("%d", &option);
+        }while(option < 0 || (option != 0 && option > markersFileNames.size()) );
+
+        if(option == 0){
+            return 0;
         }
 
-		//extract the markers from the image
-		//for (int i = 0; i < contoursDrawn.size(); i++) {
 
-		//	//Find the marker corners
+        scanf("%d", &option2);
 
-		//	Point2f upLeftCorner, upRightCorner, downLeftCorner, downRightCorner;
+        MarkerDescriptor markerDescriptor = database.findMarker(markersFileNames[option-1]);
+        if(markerDescriptor.getIdentifier() == ""){
+            markerDescriptor = MarkerDescriptor::importFromFile(markersFileNames[option-1]);
+        }
 
-		//	Point2f corners[4];
-		//	string windowName = "Marker " + i;
-		//	clone.clone().extractQuad(corners, Size(300, 300)).show(windowName);
-		//}
+        Shape shape = database.findShape(shapesFileNames[option2-1]);
+        if(shape.getIdentifier() == ""){
+            shape = Shape::importFromFile(shapesFileNames[option2-1]);
+        }
 
-		//markerDetector.plotContours(markerOrigin);
-		clone.show("image");
 
-		//        Point2f  corners [4] = { Point2f(0,0), Point2f(,2), Point2f(1,2), Point2f(1,2)};
+        database.addAssociation(markerDescriptor, shape);
 
-//		if (markerDetector.isMarkerDetected()) {
-//			clone.clone().extractQuad(markerDetector.getCorners(), Size(300, 300)).show("Marker");
-//		}
 
-		/*if (image.contains(markerOrigin)) {
-		waitKey(0);
-		}*/
 
-		if (waitKey(30) == 0)
-			break;
-	}
+
+       cout << endl << endl << endl;
+    } while (true);
+
 }
 
-void showMarker(string markerPath) {
-	Image marker(markerPath);
-	marker.show("Marker", 0);
-	cvDestroyWindow("Marker");
-}
-
-void showMarkerDatabase() {
-	vector<string> markerPaths = Util::fileNamesAt(markerDatabasePath);
-	int option = -1;
-	while (option != 0) {
 
 
-		int internalOption = -1;
-		if (option != 0) {
-			while (internalOption != 0) {
-				cout << "Action: " << endl;
-				cout << "1 - Show Marker: " << endl;
-				cout << "2 - Associate Pyramid to Marker: " << endl << endl;
 
-				cout << "0 - Leave" << endl;
-				cin >> internalOption;
 
-				switch (internalOption) {
-				case 1:
-					showMarker(markerPaths[option - 1]);
-				case 2:
 
-				default:
-					break;
-				}
-				
-			}
-		}
-	}
+int showMarkerDatabase(){
+    int option;
+    vector<string> markersFileNames = Util::fileNamesAt(markerDatabasePath);
+
+    do {
+        cout << "Markers database: " << endl;
+        printMenuList(markersFileNames, true);
+        cout <<  endl;
+        cout << "    0 - Go back" << endl;
+        cout << "Choose marker:" << endl;
+
+        do{
+            scanf("%d", &option);
+        }while(option < 0 || (option != 0 && option > markersFileNames.size()) );
+
+        if(option == 0){
+            return 0;
+        }
+
+        Image marker(markerDatabasePath +"/"+ markersFileNames[option-1]);
+
+        marker.show("Marker", 0);
+        cvDestroyWindow("Marker");
+
+        cout << endl << endl << endl;
+    } while (true);
 }
 
 int main() {
-	detectMarkers();
+
+	int option;
+	do {
+		cout << "What do yo wish to do?" << endl;
+		cout << "    1 - Show markers database" << endl;
+        cout << "    2 - Manage markers shapes associations" << endl;
+        cout << "    3 - Render augmented reality" << endl << endl;
+		cout << "    0 - Exit " << endl;
+
+		scanf("%d", &option);
+
+		cout << endl << endl << endl;
+		switch (option) {
+			case 0:
+				cout << "Good bye!" << endl;
+				return 0;
+			case 1:
+				showMarkerDatabase();
+				break;
+			case 2:
+                manageAssociatedShapes();
+				break;
+            case 3:
+                renderAugmentedReality();
+                break;
+			default:
+				cout << "Bad option." << endl;
+		}
+		cout << endl << endl << endl;
+	} while (true);
+
 	//showMarkerDatabase();
 	//readPyramid(pyramidPath);
-    return 0;
 }
+

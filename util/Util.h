@@ -10,7 +10,7 @@
 
 class Util {
 public:
-
+	static std::vector<std::string> split(const std::string &s, char delim);
 	static std::vector<std::string> fileNamesAt(std::string path);
 
 };

@@ -18,12 +18,16 @@ class MarkerDescriptor {
 
 
 public:
+    MarkerDescriptor();
+    MarkerDescriptor(string identifier, Image bwImage, vector<Point2f>);
     MarkerDescriptor(Image bwImage, vector<Point2f>);
     Image getFrontalView();
     void setOrigin(Point3f origin);
     void setIdentifier(string identifier);
     vector<Point2f> getCorners();
     void exportToFile();
+    static MarkerDescriptor importFromFile(std::string filename);
+    string getIdentifier() const;
     friend std::ostream& operator<<(std::ostream&, const MarkerDescriptor&);
 };
 

@@ -4,8 +4,20 @@
 
 #include <dirent.h>
 #include "Util.h"
+#include <sstream>
 
 using namespace std;
+
+std::vector<std::string> Util::split(const std::string &s, char delim) {
+	std::vector<std::string> elems;
+	std::stringstream ss;
+	ss.str(s);
+	std::string item;
+	while (std::getline(ss, item, delim)) {
+		elems.push_back(item);
+	}
+	return elems;
+}
 
 vector<string> Util::fileNamesAt(string path)
 {
@@ -19,7 +31,7 @@ vector<string> Util::fileNamesAt(string path)
 			string aux = ent->d_name;
 			if (aux != "." && aux != ".." && aux != "Thumbs.db")
 			{
-				string imgPath(path + "/" + ent->d_name);
+				string imgPath(ent->d_name);
 				returnVector.push_back(imgPath);
 			}
 		}
