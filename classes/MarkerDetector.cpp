@@ -242,6 +242,9 @@ vector<MarkerDescriptor> MarkerDetector::findMarkers(Image image) {
     vector<vector<Point> >  markersContours;
 
     for(vector<vector<Point> >::iterator it = rawContours.begin(); it!= rawContours.end(); it++){
+
+        std::reverse(std::begin(*it), std::end(*it));
+
         Point2f corners [4];
         int cornersi [4];
         if(validateArea(image, *it)

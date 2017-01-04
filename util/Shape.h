@@ -10,6 +10,7 @@
 #include <vector>
 #include <opencv2/core/types.hpp>
 #include <opencv/cv.h>
+#include "Image.h"
 
 using namespace std;
 using namespace cv;
@@ -23,7 +24,7 @@ protected:
 public:
     Shape();
     Shape(std::string identifier,std::string type, std::vector<Point3f> vertices);
-    virtual void draw();
+    virtual void draw(Image & image,const  Mat & rvec, const  Mat & tvec, const  Mat & intrinsicCoeffs, const Mat & distortionCoeffs);
     static Shape importFromFile(std::string filePath);
     string getIdentifier() const;
 };

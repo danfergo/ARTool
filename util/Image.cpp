@@ -312,8 +312,9 @@ Vec3b &Image::at3(Point point) {
     return at3(point.y, point.x);
 }
 
-void Image::plotCircle(Point center, Scalar color, int radius) {
+Image & Image::plotCircle(Point center, Scalar color, int radius) {
     circle(mat, center, radius, color);
+    return *this;
 }
 
 void Image::plotLine(Point start, Point end, Scalar color, int thickness) {
@@ -364,13 +365,32 @@ Image & Image::writeText(string text, int testPosition) {
     return *this;
 }
 
-void Image::plotPolygon(const vector<Point2f> &vector, Scalar color) {
+Image & Image::plotPolygon(const vector<Point2f> &vector, Scalar color) {
 
     for(int i = 0; i < vector.size(); i++){
         int i2 = (i+1) % vector.size();
         plotLine(vector[i], vector[i2], color);
     }
 
+    return *this;
+
+}
+
+Image & Image::rotate(float alpha) {
+    Mat rot_mat = getRotationMatrix2D(Point(mat.cols/2,mat.rows/2), alpha, 1.0f);
+    warpAffine(mat, mat, rot_mat, Size(mat.cols,mat.rows));
+    return *this;
+}
+
+Image &Image::flip(int flipCode) {
+    Mat dst;
+    cv::flip(mat, dst, flipCode);
+    return setMat(dst);
+}
+
+Image &Image::plotArrowedLine(Point pt1, Point pt2, Scalar color) {
+    arrowedLine(mat, pt1,pt2, color);
+    return *this;
 }
 
 

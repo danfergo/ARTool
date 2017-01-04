@@ -32,4 +32,28 @@ void Database::addAssociation(MarkerDescriptor markerDescriptor, Shape shape) {
     shapes.push_back(shape);
 }
 
+MarkerDescriptor Database::findSimilar(const MarkerDescriptor &descriptor, int & rotations) {
+
+    for (std::vector<MarkerDescriptor>::iterator it = markers.begin(); it != markers.end(); ++it) {
+       if((*it).matches(descriptor,rotations)){
+           return *it;
+
+       };
+    }
+    MarkerDescriptor marker;
+    return marker;
+}
+
+vector<Shape> Database::findAllShapesForMarker(MarkerDescriptor descriptor) {
+    vector<Shape> returnVector;
+
+    for (std::vector<MarkerDescriptor>::iterator it = markers.begin(); it != markers.end(); ++it) {
+        if (it->getIdentifier() == descriptor.getIdentifier()) {
+            returnVector.push_back(shapes[it - markers.begin()]);
+        }
+    }
+
+    return returnVector;
+}
+
 

@@ -11,6 +11,7 @@ using namespace cv;
 
 const int ESC_KEY = 27;
 const int SPC_KEY = 32;
+const int R_KEY = 114;
 const int NO_KEY = 255;
 
 const Point NULLP = Point(-1, -1);
@@ -28,16 +29,31 @@ void onSelectOrigin(int event, int x, int y, int flags, void *userdata) {
 }
 
 
+bool fillInMarkerDetails(MarkerDescriptor &marker, int idx) {
+    int key;
+    do {
 
-bool fillInMarkerDetails(MarkerDescriptor & marker, int idx){
+        marker.getFrontalView()
+                .clone()
+                .changeColorSpace(CV_GRAY2BGR)
+                .plotArrowedLine(Point(0,0), Point(50,0))
+                .plotArrowedLine(Point(0,0), Point(0,50), Scalar(0, 255, 0))
+                .show("Marker " + to_string(idx));
 
-    marker.getFrontalView().show("Marker " + to_string(idx));
-    int key = waitKey(0);
+        key = waitKey(0);
 
-    if(key == ESC_KEY){
-        return false;
-    }
 
+        if (key == ESC_KEY) {
+            return false;
+        }
+
+        if(key == R_KEY){
+            marker.getFrontalView().rotate(90);
+        }
+
+    } while (key != SPC_KEY);
+
+    cv::destroyWindow("Marker " + to_string(idx));
 
     string identifier;
 
@@ -48,9 +64,6 @@ bool fillInMarkerDetails(MarkerDescriptor & marker, int idx){
     // int x, y, z;
     // printf("x y z?");
     // scanf("%d %d %d", &x, &y, &z);
-
-    cv::destroyWindow("Marker " + to_string(idx));
-
 
     return true;
 }
@@ -77,7 +90,7 @@ void detectOneMarker() {
             image.plotPolygon(markers[i].getCorners());
         }
 
-        image.writeText("Press space to exportToFile the current markers.").show("Camera");
+        image.writeText("Press space to export the current markers.").show("Camera");
         key = waitKey(1);
     } while (key != SPC_KEY && key != ESC_KEY);
 
@@ -85,13 +98,12 @@ void detectOneMarker() {
     camera.release();
 
     if (key == SPC_KEY) {
-        for (vector<MarkerDescriptor>::iterator it = markers.begin(); it != markers.end();){
-            if(fillInMarkerDetails(*it, it - markers.begin() + 1)){
+        for (vector<MarkerDescriptor>::iterator it = markers.begin(); it != markers.end();) {
+            if (fillInMarkerDetails(*it, it - markers.begin() + 1)) {
                 (*it).exportToFile();
                 cout << "Marker " << *it << " exported to file." << endl;
                 it++;
-            }
-            else {
+            } else {
                 it = markers.erase(it);
             }
         }

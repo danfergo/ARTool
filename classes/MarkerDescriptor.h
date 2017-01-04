@@ -21,7 +21,7 @@ public:
     MarkerDescriptor();
     MarkerDescriptor(string identifier, Image bwImage, vector<Point2f>);
     MarkerDescriptor(Image bwImage, vector<Point2f>);
-    Image getFrontalView();
+    Image & getFrontalView();
     void setOrigin(Point3f origin);
     void setIdentifier(string identifier);
     vector<Point2f> getCorners();
@@ -29,6 +29,7 @@ public:
     static MarkerDescriptor importFromFile(std::string filename);
     string getIdentifier() const;
     friend std::ostream& operator<<(std::ostream&, const MarkerDescriptor&);
+    bool matches(const MarkerDescriptor &descriptor, int & rotations);
 };
 
 std::ostream& operator<<(std::ostream &strm, const MarkerDescriptor &a);

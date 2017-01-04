@@ -24,10 +24,11 @@ private:
 
     vector<Point2f> tmpPatternCornersImagePos;
 
-    Mat intrinsicCoeffs= Mat(3, 3, CV_32FC1);
+    Mat intrinsicCoeffs = Mat(3, 3, CV_32FC1);
     Mat distortionCoeffs;
 
 public:
+    CameraCalibrator();
     CameraCalibrator(int nRows, int nCols, Size frameSize, int nSamples);
     void findChessboard(Image & image);
     void collectLastFrame();
@@ -35,8 +36,11 @@ public:
     void calibrate();
     Image undistort(Image image);
 
-
+    Mat getIntrinsicCoeffs();
+    Mat getDistortionCoeffs();
+    
     void exportCoefficients(string filename = "camera_calibration.xml");
+    static CameraCalibrator importCoefficients(string filename = "camera_calibration.xml");
 
     int getNumberOfCollectedSamples();
 };

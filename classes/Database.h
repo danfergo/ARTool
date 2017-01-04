@@ -18,8 +18,11 @@ public:
     vector<Shape> shapes;
     MarkerDescriptor findMarker(std::string identifier);
     Shape findShape(std::string identifier);
-
+    vector<Shape> findAllShapesForMarker(MarkerDescriptor descriptor);
     void addAssociation(MarkerDescriptor markerDescriptor, Shape shape);
+
+
+    MarkerDescriptor findSimilar(const MarkerDescriptor &descriptor, int & rotations);
 };
 
 

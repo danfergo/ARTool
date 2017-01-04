@@ -53,7 +53,7 @@ void CameraCalibrator::findChessboard(Image &image) {
                                        CV_CALIB_CB_ADAPTIVE_THRESH | CV_CALIB_CB_FILTER_QUADS);
     if (found) {
         cornerSubPix(image.mat, tmpPatternCornersImagePos, Size(11, 11), Size(-1, -1),
-                     TermCriteria(CV_TERMCRIT_EPS | CV_TERMCRIT_ITER, 30, 0.1));
+                     TermCriteria(CV_TERMCRIT_EPS | CV_TERMCRIT_ITER, 23, 0.1));
         drawChessboardCorners(image.mat, patternSize, tmpPatternCornersImagePos, true);
     } else {
         tmpPatternCornersImagePos.clear();
@@ -79,5 +79,28 @@ void CameraCalibrator::exportCoefficients(string filename) {
 
 int CameraCalibrator::getNumberOfCollectedSamples() {
     return (int)patternsCornersImagePos.size();
+}
+
+CameraCalibrator CameraCalibrator::importCoefficients(string filename) {
+    CameraCalibrator calibrator;
+
+    FileStorage fs(filename, FileStorage::READ);
+    fs["intrinsic_coeffs"] >> calibrator.intrinsicCoeffs;
+    fs["distortion_coeffs"] >> calibrator.distortionCoeffs;
+    fs.release();
+
+    return calibrator;
+}
+
+CameraCalibrator::CameraCalibrator() {
+
+}
+
+Mat CameraCalibrator::getIntrinsicCoeffs() {
+    return this->intrinsicCoeffs;
+}
+
+Mat CameraCalibrator::getDistortionCoeffs() {
+    return this->distortionCoeffs;
 }
 

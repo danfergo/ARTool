@@ -197,7 +197,7 @@ public:
 
     uchar & at1(Point2i point);
 
-    void plotCircle(Point center, Scalar color = Scalar(0,0,255) , int radius = 5);
+    Image & plotCircle(Point center, Scalar color = Scalar(0,0,255) , int radius = 5);
     void plotLine(Point start, Point end,  Scalar color = Scalar(0,0,255) , int thickness = 2);
     bool contains(int i, int j);
     bool contains(Point point);
@@ -206,7 +206,10 @@ public:
 
     Size size();
 
-    void plotPolygon(const vector<Point2f> &vector, Scalar color = Scalar(0,255,0));
+    Image & plotPolygon(const vector<Point2f> &vector, Scalar color = Scalar(0,255,0));
+    Image & rotate(float alpha);
+    Image & flip(int flipCode = 0);
+    Image & plotArrowedLine(Point pt1, Point pt2, Scalar color = Scalar(0,0,255));
 
 private:
     /**

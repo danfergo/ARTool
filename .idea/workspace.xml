@@ -14,19 +14,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a61ed5ed-207e-4da7-9561-6913e52a6066" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/classes/Database.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/classes/Database.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/Shape.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/Shape.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/ARTool.iml" afterPath="$PROJECT_DIR$/.idea/ARTool.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/shapes/cube.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/shapes/sidepyramid.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/shapes/small_cube.txt" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/database/poster1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/database/poster2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/database/world_war_robot_wallpaper_by_kuanwin-d33569x.jpg" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/database/hiro.jpg" afterPath="$PROJECT_DIR$/assets/database/hiro.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ar.cpp" afterPath="$PROJECT_DIR$/ar.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/camera_calibration.xml" afterPath="$PROJECT_DIR$/assets/camera_calibration.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/shapes/pyramid.txt" afterPath="$PROJECT_DIR$/assets/shapes/pyramid.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/calibrator.cpp" afterPath="$PROJECT_DIR$/calibrator.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/CameraCalibrator.cpp" afterPath="$PROJECT_DIR$/classes/CameraCalibrator.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/CameraCalibrator.h" afterPath="$PROJECT_DIR$/classes/CameraCalibrator.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/Database.cpp" afterPath="$PROJECT_DIR$/classes/Database.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/Database.h" afterPath="$PROJECT_DIR$/classes/Database.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/MarkerDescriptor.cpp" afterPath="$PROJECT_DIR$/classes/MarkerDescriptor.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/MarkerDescriptor.h" afterPath="$PROJECT_DIR$/classes/MarkerDescriptor.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/Util.cpp" afterPath="$PROJECT_DIR$/util/Util.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/Util.h" afterPath="$PROJECT_DIR$/util/Util.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/MarkerDetector.cpp" afterPath="$PROJECT_DIR$/classes/MarkerDetector.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/Image.cpp" afterPath="$PROJECT_DIR$/util/Image.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/Image.h" afterPath="$PROJECT_DIR$/util/Image.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/Shape.cpp" afterPath="$PROJECT_DIR$/util/Shape.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/Shape.h" afterPath="$PROJECT_DIR$/util/Shape.h" />
     </list>
     <ignored path="ARTool.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,13 +56,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="calibrator.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/calibrator.cpp">
+      <file leaf-file-name="Shape.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/util/Shape.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1398">
-              <caret line="79" column="50" selection-start-line="79" selection-start-column="40" selection-end-line="79" selection-end-column="50" />
+            <state relative-caret-position="396">
+              <caret line="26" column="132" selection-start-line="26" selection-start-column="132" selection-end-line="26" selection-end-column="132" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Shape.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/util/Shape.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="61" column="72" selection-start-line="61" selection-start-column="72" selection-end-line="61" selection-end-column="72" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MarkerDetector.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/classes/MarkerDetector.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="194">
+              <caret line="245" column="53" selection-start-line="245" selection-start-column="53" selection-end-line="245" selection-end-column="53" />
               <folding>
-                <element signature="e#0#19#0" expanded="true" />
+                <element signature="e#45#72#0" expanded="true" />
+                <element signature="e#1859#2615#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -61,10 +92,22 @@
       <file leaf-file-name="ar.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ar.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="666">
-              <caret line="46" column="45" selection-start-line="46" selection-start-column="45" selection-end-line="46" selection-end-column="45" />
+            <state relative-caret-position="360">
+              <caret line="51" column="90" selection-start-line="51" selection-start-column="90" selection-end-line="51" selection-end-column="90" />
               <folding>
                 <element signature="e#232#255#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MarkerDescriptor.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/classes/MarkerDescriptor.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="60" column="14" selection-start-line="60" selection-start-column="14" selection-end-line="60" selection-end-column="14" />
+              <folding>
+                <element signature="e#45#77#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -90,20 +133,13 @@
         <option value="$PROJECT_DIR$/classes/Image.h" />
         <option value="$PROJECT_DIR$/opencv_calibration.cpp" />
         <option value="$PROJECT_DIR$/main.cpp" />
-        <option value="$PROJECT_DIR$/classes/CameraCalibrator.h" />
-        <option value="$PROJECT_DIR$/classes/CameraCalibrator.cpp" />
         <option value="$PROJECT_DIR$/util/Geometry.cpp" />
         <option value="$PROJECT_DIR$/util/Geometry.h" />
-        <option value="$PROJECT_DIR$/util/Image.h" />
         <option value="$PROJECT_DIR$/util/Camera.h" />
         <option value="$PROJECT_DIR$/util/Camera.cpp" />
         <option value="$PROJECT_DIR$/classes/MarkerDetector.h" />
-        <option value="$PROJECT_DIR$/calibrator.cpp" />
-        <option value="$PROJECT_DIR$/classes/MarkerDetector.cpp" />
-        <option value="$PROJECT_DIR$/util/Image.cpp" />
         <option value="$PROJECT_DIR$/util/Util.cpp" />
         <option value="$PROJECT_DIR$/util/Util.h" />
-        <option value="$PROJECT_DIR$/assets/shapes/pyramid.txt" />
         <option value="$PROJECT_DIR$/shapes/Object.h" />
         <option value="$PROJECT_DIR$/shapes/Object.cpp" />
         <option value="$PROJECT_DIR$/shapes/Cube.h" />
@@ -112,13 +148,23 @@
         <option value="$PROJECT_DIR$/shapes/Pyramid.cpp" />
         <option value="$PROJECT_DIR$/shapes/Shape.h" />
         <option value="$PROJECT_DIR$/shapes/Shape.cpp" />
-        <option value="$PROJECT_DIR$/util/Shape.h" />
-        <option value="$PROJECT_DIR$/classes/Database.h" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/classes/Database.cpp" />
-        <option value="$PROJECT_DIR$/classes/MarkerDescriptor.h" />
-        <option value="$PROJECT_DIR$/classes/MarkerDescriptor.cpp" />
+        <option value="$PROJECT_DIR$/classes/CameraCalibrator.cpp" />
+        <option value="$PROJECT_DIR$/util/Shape.h" />
+        <option value="$PROJECT_DIR$/classes/CameraCalibrator.h" />
+        <option value="$PROJECT_DIR$/calibrator.cpp" />
+        <option value="$PROJECT_DIR$/util/Image.cpp" />
+        <option value="$PROJECT_DIR$/util/Image.h" />
+        <option value="$PROJECT_DIR$/classes/MarkerDetector.cpp" />
+        <option value="$PROJECT_DIR$/assets/shapes/cube.txt" />
+        <option value="$PROJECT_DIR$/assets/shapes/small_cube.txt" />
         <option value="$PROJECT_DIR$/util/Shape.cpp" />
+        <option value="$PROJECT_DIR$/assets/shapes/pyramid.txt" />
+        <option value="$PROJECT_DIR$/assets/shapes/sidepyramid.txt" />
+        <option value="$PROJECT_DIR$/classes/MarkerDescriptor.cpp" />
+        <option value="$PROJECT_DIR$/classes/MarkerDescriptor.h" />
+        <option value="$PROJECT_DIR$/classes/Database.h" />
+        <option value="$PROJECT_DIR$/classes/Database.cpp" />
         <option value="$PROJECT_DIR$/ar.cpp" />
       </list>
     </option>
@@ -178,6 +224,48 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ARTool" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ARTool" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ARTool" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ARTool" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="classes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ARTool" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ARTool" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -188,7 +276,12 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets/shapes" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets/shapes" />
+      <recent name="$PROJECT_DIR$/assets/database" />
       <recent name="$PROJECT_DIR$/util" />
     </key>
   </component>
@@ -396,7 +489,7 @@
       <workItem from="1483125528220" duration="922000" />
       <workItem from="1483203033582" duration="12000" />
       <workItem from="1483302989181" duration="1743000" />
-      <workItem from="1483370506794" duration="72072000" />
+      <workItem from="1483370506794" duration="92737000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit;&#10;Follow Contours algorithm implemented;">
       <created>1482786460063</created>
@@ -409,7 +502,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="136223000" />
+    <option name="totallyTimeSpent" value="156888000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -431,7 +524,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32815966" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12195122" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.51773834" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48337027" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -488,39 +581,11 @@
           <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="20" />
+      <option name="time" value="21" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:///usr/local/include/opencv2/core/types.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="179" column="23" selection-start-line="179" selection-start-column="23" selection-end-line="179" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/include/opencv2/core/base.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-186">
-          <caret line="594" column="19" selection-start-line="594" selection-start-column="19" selection-end-line="594" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/wallpaper.jpg" />
-    <entry file="file://$PROJECT_DIR$/dirent.h" />
-    <entry file="file://$USER_HOME$/opencv/modules/imgproc/src/color.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="9747" column="0" selection-start-line="9747" selection-start-column="0" selection-end-line="9747" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/database/world_war_robot_wallpaper_by_kuanwin-d33569x.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/database/poster2.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -529,14 +594,6 @@
     <entry file="file://$PROJECT_DIR$/assets/database/poster1.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/include/opencv2/calib3d.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="713" column="18" selection-start-line="713" selection-start-column="18" selection-end-line="713" selection-end-column="18" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/opencv/modules/imgproc/src/undistort.cpp">
@@ -556,14 +613,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="27" column="48" selection-start-line="27" selection-start-column="48" selection-end-line="27" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/camera_calibration.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -674,30 +723,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/classes/CameraCalibrator.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="38" column="27" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="27" />
-          <folding>
-            <element signature="e#114#129#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/util/Camera.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/database/hiro2.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/database/hiro.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
@@ -716,14 +742,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="12" column="36" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/shapes/pyramid.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
           <folding />
         </state>
       </provider>
@@ -752,76 +770,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/classes/MarkerDetector.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-250">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classes/CameraCalibrator.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1224">
-          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/shapes/Pyramid.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/util/Image.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-72">
-          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/util/Image.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="279" column="7" selection-start-line="279" selection-start-column="7" selection-end-line="279" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classes/Database.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="18" column="54" selection-start-line="18" selection-start-column="54" selection-end-line="18" selection-end-column="54" />
-          <folding>
-            <element signature="e#99#113#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/util/Shape.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="53" column="14" selection-start-line="53" selection-start-column="14" selection-end-line="53" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classes/Database.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classes/MarkerDescriptor.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="28" column="63" selection-start-line="28" selection-start-column="63" selection-end-line="28" selection-end-column="63" />
           <folding />
         </state>
       </provider>
@@ -834,48 +786,203 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/util/Shape.h">
+    <entry file="file:///usr/local/include/opencv2/calib3d.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="24" column="6" selection-start-line="24" selection-start-column="6" selection-end-line="24" selection-end-column="6" />
+        <state relative-caret-position="171">
+          <caret line="620" column="18" selection-start-line="620" selection-start-column="18" selection-end-line="620" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/classes/MarkerDescriptor.cpp">
+    <entry file="file://$USER_HOME$/opencv/modules/core/src/arithm.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="50" column="31" selection-start-line="50" selection-start-column="31" selection-end-line="50" selection-end-column="31" />
-          <folding>
-            <element signature="e#45#77#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="1121">
+          <caret line="658" column="0" selection-start-line="658" selection-start-column="0" selection-end-line="658" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/classes/MarkerDetector.cpp">
+    <entry file="file://$PROJECT_DIR$/assets/camera_calibration.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="146" column="19" selection-start-line="146" selection-start-column="19" selection-end-line="146" selection-end-column="19" />
-          <folding>
-            <element signature="e#1859#2615#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/include/opencv2/core.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="569" column="17" selection-start-line="569" selection-start-column="17" selection-end-line="569" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/database/hiro.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/util/Camera.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/calibrator.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1398">
-          <caret line="79" column="50" selection-start-line="79" selection-start-column="40" selection-end-line="79" selection-end-column="50" />
+        <state relative-caret-position="590">
+          <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/util/Image.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="208" column="87" selection-start-line="208" selection-start-column="87" selection-end-line="208" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/database/qrcode.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/CameraCalibrator.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/MarkerDetector.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-220">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/util/Image.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="367" column="16" selection-start-line="367" selection-start-column="16" selection-end-line="367" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/shapes/small_cube.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/shapes/cube.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/shapes/pyramid.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="5" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/Database.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="37" column="44" selection-start-line="37" selection-start-column="44" selection-end-line="37" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/Database.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="24" column="84" selection-start-line="24" selection-start-column="67" selection-end-line="24" selection-end-column="84" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/shapes/sidepyramid.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/MarkerDescriptor.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="558">
+          <caret line="31" column="64" selection-start-line="31" selection-start-column="59" selection-end-line="31" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/CameraCalibrator.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="2" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/MarkerDescriptor.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="60" column="14" selection-start-line="60" selection-start-column="14" selection-end-line="60" selection-end-column="14" />
+          <folding>
+            <element signature="e#45#77#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/util/Shape.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="61" column="72" selection-start-line="61" selection-start-column="72" selection-end-line="61" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/util/Shape.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="26" column="132" selection-start-line="26" selection-start-column="132" selection-end-line="26" selection-end-column="132" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/MarkerDetector.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="245" column="53" selection-start-line="245" selection-start-column="53" selection-end-line="245" selection-end-column="53" />
+          <folding>
+            <element signature="e#45#72#0" expanded="true" />
+            <element signature="e#1859#2615#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ar.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="666">
-          <caret line="46" column="45" selection-start-line="46" selection-start-column="45" selection-end-line="46" selection-end-column="45" />
+        <state relative-caret-position="360">
+          <caret line="51" column="90" selection-start-line="51" selection-start-column="90" selection-end-line="51" selection-end-column="90" />
           <folding>
             <element signature="e#232#255#0" expanded="true" />
           </folding>
